@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerfies: Deformable Neural Radiance Fields</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://www.linkedin.com/in/rishubh-parihar/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">We Never Go Out Of Style</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/rishubh-parihar/">Rishubh Parihar</a>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/raghav-magazine-993537201/">Raghav Magazine</a>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/piyush-tiwari-9b59211a7/">Piyush Tiwari</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/venkatesh-babu-radhakrishnan-4a8816235/">Venkatesh Babu Radhkrishnan</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Indian Institute of Science,</span>
+            <span class="author-block">Vision and AI Lab</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                <!-- </a> -->
+              </span>
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                <!-- </a> -->
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <!-- <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                <!-- </a> -->
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <!-- <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  <!-- </a> -->
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <!-- <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  <!-- </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">We never go out of Style</span> : Motion Disentanglement by Subspace Decomposition of StyleGAN Latent Space
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-gal_gadot">
+          <video poster="" id="gal_gadot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/gal_gadot.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-red_car">
+          <video poster="" id="red_car" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/red_car.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-actor">
+          <video poster="" id="actor" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/actor.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-black_car">
+          <video poster="" id="black_car" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/black_car.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-old_person_reenactment">
+          <video poster="" id="old_person_reenactment" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/old_person_reenactment.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-stylegan_nada">
+          <video poster="" id="stylegan_nada" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/stylegan_nada.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-age_editing">
+          <video poster="" id="age_editing" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/age_editing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Real-world objects perform complex motions that involve multiple decomposable motion components.
+             For example, while talking, a person continuously changes their expressions, head pose, and body pose.
+          </p>
+          <p>
+            Recently, a range of
+            methods have been proposed for unconditional video generation. However, these approaches provide 
+            limited control for manipulating an object’s motion in the generated video. In this work, we propose object 
+            motion decomposition in videos using a pretrained image GAN model. We generate
+            disentangled linear motion subspaces in the latent space of
+            widely used StyleGAN2 models that are semantically meaningful and control a single explainable motion component.
+            We evaluate the disentanglement properties of motion subspaces on faces and car datasets with extensive quantitative and qualitative experiments.
+          </p>
+          <p>
+            Furthermore, we show results of the proposed motion decomposition on downstream
+            video editing tasks of selective motion transfer, e.g., transferring only facial expressions and 
+            video stabilization without explicitly training for these tasks. As we are utilizing
+            pretrained StyleGAN2 models, our method seamlessly integrates with latent-based editing and stylization methods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Car Motion Control</h2>
+          <p>
+            Using <i>We never go out of Style</i> you can control amount or scale of any attribute,
+            be it rotation in cars or any custom feature you want to select.
+          </p>
+          <video id="amount" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/black_car.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Face Expression Control</h2>
+          <p>
+            Using <i>We never go out of Style</i> you can control amount or scale of any attribute,
+            be it expression in face or any custom feature you want to select.
+          </p>
+          <video id="amount" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/face_control.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      
+    </div>
+    <!--/ Attribute Editing. -->
+
+    <!-- Matting. -->
+    <div class="column">
+      <h2 class="title is-3">Reenactment with Atrribute Editing</h2>
+      <div class="columns is-centered">
+        <div class="content">
+          <p>
+            You can edit age or any attribute you desire of video while faithfully reenacting driving video and 
+            decompose their motions as well. <br></br>
+          </p>
+          <video id="editing-video" controls playsinline height="100%">
+            <source src="./static/videos/age_editing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="column">
+        <h2 class="title is-3">Reenactment with Stylization</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              You can use any image to transfer its style to video of your choice. <br></br>
+            </p>
+            <video id="stylization-video" controls playsinline height="100%">
+              <source src="./static/videos/stylegan_nada.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+  </div>
+  <!--/ Attribute Editing. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work which helped our contribution.
+          </p>
+          <p>
+            <a href="https://dl.acm.org/doi/abs/10.1145/3550469.3555382">Stitch it in Time: GAN-Based Facial Editing of Real Videos
+            </a> 
+          </p>
+          <p>
+            <a href="http://arxiv.org/abs/1912.04958">StyleGan2</a> : The style-based GAN architecture (StyleGAN) yields state-of-the-art results in data-driven unconditional generative image modeling.
+          </p>
+          <p>
+            <a href="https://dl.acm.org/doi/abs/10.1145/3528223.3530164">StyleGAN-NADA</a> converts a pre-trained generator to new domains using only a textual prompt and no training data.
+          </p>
+          <p>
+            <a href="https://dl.acm.org/doi/abs/10.1145/3503161.3547972">Everything is There in Latent Space: Attribute Editing and Attribute Style Manipulation by StyleGAN Latent Space Exploration.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Rishubh Parihar, Raghav Magazine, Piyush Tiwari, R. Venkatesh Babu},
+  title     = {We never go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space},
+  journal   = {ICCV},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
