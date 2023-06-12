@@ -1,6 +1,6 @@
 # We Never Go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space
 
-This is the repository that contains source code for the [motion style] (https://nerfies.github.io).
+This is the repository that contains source code for the [motion style] (https://rishubhpar.github.io/motionstyle).
 
 If you find Nerfies useful for your work please cite:
 ```
