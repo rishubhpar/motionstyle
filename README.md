@@ -1,14 +1,14 @@
-# Nerfies
+# We Never Go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for the [motion style] (https://nerfies.github.io).
 
 If you find Nerfies useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@article{parihar2023motionstyle
+  author    = {Parihar, Rishubh and Magazine, Raghav and Tiwari, Piyush and Babu, R. Venkatesh},
+  title     = {We Never Go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space},
+  journal   = {AI4CC, CVPRW},
+  year      = {2023},
 }
 ```
 
