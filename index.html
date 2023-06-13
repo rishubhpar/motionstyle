@@ -94,7 +94,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">We Never Go Out Of Style</h1>
+          <h1 class="title is-1 publication-title">We Never Go Out Of Style: Motion Decomposition by Subspace Decomposition of Latent Space</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://www.linkedin.com/in/rishubh-parihar/">Rishubh Parihar</a>,</span>
@@ -109,8 +109,8 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Indian Institute of Science,</span>
-            <span class="author-block">Vision and AI Lab</span>
+            <span class="author-block">Vision and AI Lab,</span>
+            <span class="author-block">Indian Institute of Science, Bangalore</span>
           </div>
 
           <div class="column has-text-centered">
@@ -183,7 +183,8 @@
       </video>
       <h2 class="subtitle has-text-centered">
         <br>
-        <span class="dnerf">We Never Go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space </span>
+        <span class="dnerf">We proposed a new task for motion decomposition into interpretable motion components. 
+                            E.g., the proposed method can decompose talking mouth video into expressions and head pose motion.</span>
       </h2>
     </div>
   </div>
@@ -298,8 +299,8 @@
         <div class="content">
           <h2 class="title is-3">Car Motion Control</h2>
           <p>
-            Using <i>We never go out of Style</i> you can control amount or scale of any attribute,
-            be it rotation in cars or any custom feature you want to select.
+            Motion decomposition can enable multiple downstream tasks such manipulating the strength of a single motion component.
+            Here we modulate the strength of the car motion by scaling the transition latent trajectory.
           </p>
           <video id="amount" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/black_car.mp4"
@@ -312,8 +313,7 @@
         <div class="content">
           <h2 class="title is-3">Face Expression Control</h2>
           <p>
-            Using <i>We never go out of Style</i> you can control amount or scale of any attribute,
-            be it expression in face or any custom feature you want to select.
+            Here we module the strength of the expressions of the subject. Observe the large facial motions for the large strength values.
           </p>
           <video id="amount" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/face_control.mp4"
@@ -334,8 +334,9 @@
       <div class="columns is-centered">
         <div class="content">
           <p>
-            You can edit age or any attribute you desire of video while faithfully reenacting driving video and 
-            decompose their motions as well. <br></br>
+            As we use StyleGAN2 as the backbone, our method seemlessly integrate with latent space manipulation based attribute editing.
+            We first embed the source image and the driving video into the W+ latent space and then transfer the trajectory to the source latent.
+            Finally, we perform attribute editing on the transferred latent trajectory to obtain reenactment results with editing. 
           </p>
           <video id="editing-video" controls playsinline height="100%">
             <source src="./static/videos/age_editing.mp4"
@@ -351,7 +352,7 @@
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              You can use any image to transfer its style to video of your choice. <br></br>
+              Using StyleGAN also enables to perform stylization of the video by adapting the generator to a new domain using StyleGAN-nada <br></br>
             </p>
             <video id="stylization-video" controls playsinline height="100%">
               <source src="./static/videos/stylegan_nada.mp4"
@@ -402,7 +403,7 @@
     <pre><code>@article{park2021nerfies,
   author    = {Rishubh Parihar, Raghav Magazine, Piyush Tiwari, R. Venkatesh Babu},
   title     = {We never go out of Style: Motion Disentanglement by Subspace Decomposition of Latent Space},
-  journal   = {ICCV},
+  journal   = {AI4CC-CVPRW},
   year      = {2023},
 }</code></pre>
   </div>
